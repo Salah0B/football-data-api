@@ -1,0 +1,120 @@
+[
+  {
+    "id": 1,
+    "name": "FC Barcelona",
+    "tla": "BAR",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
+    "founded": 1899,
+    "clubColors": "Blue / Red",
+    "players": ["Yamal", "Pedri"]
+  },
+  {
+    "id": 2,
+    "name": "Real Madrid CF",
+    "tla": "RMA",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg",
+    "founded": 1902,
+    "clubColors": "White",
+    "players": ["Mbappe"]
+  },
+  {
+    "id": 3,
+    "name": "Manchester United FC",
+    "tla": "MUN",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg",
+    "founded": 1878,
+    "clubColors": "Red / White / Black",
+    "players": []
+  },
+  {
+    "id": 4,
+    "name": "Liverpool FC",
+    "tla": "LIV",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg",
+    "founded": 1892,
+    "clubColors": "Red",
+    "players": []
+  },
+  {
+    "id": 5,
+    "name": "FC Bayern München",
+    "tla": "FCB",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_München_logo_%282017%29.svg",
+    "founded": 1900,
+    "clubColors": "Red / White",
+    "players": []
+  },
+  {
+    "id": 109,
+    "name": "Juventus FC",
+    "tla": "JUV",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/1/15/Juventus_FC_2017_logo.svg",
+    "founded": 1897,
+    "clubColors": "Black / White",
+    "players": []
+  },
+  {
+    "id": 7,
+    "name": "Paris Saint-Germain FC",
+    "tla": "PSG",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg",
+    "founded": 1970,
+    "clubColors": "Blue / Red",
+    "players": []
+  },
+  {
+    "id": 8,
+    "name": "Chelsea FC",
+    "tla": "CHE",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
+    "founded": 1905,
+    "clubColors": "Blue / White",
+    "players": []
+  },
+  {
+    "id": 57,
+    "name": "Arsenal FC",
+    "tla": "ARS",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg",
+    "founded": 1886,
+    "clubColors": "Red / White",
+    "players": [
+      "Kepa Arrizabalaga",
+      "David Raya",
+      "Tommy Setford",
+      "Max Dowman",
+      "Andre Harriman-Annous",
+      "Myles Lewis-Skelly",
+      "Ethan Nwaneri",
+      "Cristhian Mosquera",
+      "Noni Madueke",
+      "Riccardo Calafiori",
+      "Piero Hincapié",
+      "Martín Zubimendi",
+      "Bukayo Saka",
+      "Jurrien Timber",
+      "William Saliba",
+      "Martinelli",
+      "Christian Nørgaard",
+      "Gabriel",
+      "Leandro Trossard",
+      "Viktor Gyökeres",
+      "Declan Rice",
+      "Mikel Merino",
+      "Martin Ødegaard",
+      "Ben White",
+      "Eberechi Eze",
+      "Gabriel Jesus",
+      "Kai Havertz"
+    ],
+  },
+  {
+    "id": 10,
+    "name": "AC Milan",
+    "tla": "ACM",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_of_AC_Milan.svg",
+    "founded": 1899,
+    "clubColors": "Red / Black",
+    "players": []
+  }
+]
