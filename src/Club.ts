@@ -1,3 +1,4 @@
+import { Squad } from "./ApiClub";
 
 export interface Club {
     id: number;
@@ -6,5 +7,5 @@ export interface Club {
     logo: string;
     founded: number;
     clubColors: string;
-    players: string[];
+    players: Squad[];
 }

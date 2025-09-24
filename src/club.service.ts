@@ -1,13 +1,18 @@
 import { readFile } from 'node:fs/promises';
 import { Injectable, OnModuleInit } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import type { Club } from './Club';
 import { HttpService } from '@nestjs/axios';
-import { firstValueFrom, map, tap } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { ApiClubs } from 'src/ApiClub';
 
 @Injectable()
 export class ClubService implements OnModuleInit {
-  constructor(private readonly httpService: HttpService) {}
+    private readonly apiKey: string;
+
+  constructor(private readonly httpService: HttpService, private readonly configService: ConfigService) {
+      this.apiKey = this.configService.get<string>('API_KEY');
+  }
 
   private readonly storage: Map<number, Club> = new Map();
 
@@ -26,7 +31,7 @@ export class ClubService implements OnModuleInit {
       this.httpService.get<ApiClubs>(
           'http://api.football-data.org/v4/competitions/2021/teams', {
           headers: {
-              'X-Auth-Token': '579ca5e0ae3541c1bc1973f79cddc32b',
+              'X-Auth-Token': this.apiKey,
           },
           }),
     );
@@ -37,7 +42,7 @@ export class ClubService implements OnModuleInit {
           logo: apiClub.crest,
           founded : apiClub.founded,
           clubColors : apiClub.clubColors,
-          players : apiClub.squad.map(player => player.name),
+          players : apiClub.squad,
       }))
       .forEach((club) => this.addClub(club));
   }

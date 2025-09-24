@@ -12,7 +12,7 @@ interface ApiClub {
     squad: Squad[];
 }
 
-interface Squad {
+export interface Squad {
     id: number;
     name: string;
     position: string;

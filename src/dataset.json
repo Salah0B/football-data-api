@@ -6,7 +6,7 @@
     "logo": "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
     "founded": 1899,
     "clubColors": "Blue / Red",
-    "players": ["Yamal", "Pedri"]
+    "players": []
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "logo": "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg",
     "founded": 1902,
     "clubColors": "White",
-    "players": ["Mbappe"]
+    "players": []
   },
   {
     "id": 3,
@@ -78,35 +78,7 @@
     "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg",
     "founded": 1886,
     "clubColors": "Red / White",
-    "players": [
-      "Kepa Arrizabalaga",
-      "David Raya",
-      "Tommy Setford",
-      "Max Dowman",
-      "Andre Harriman-Annous",
-      "Myles Lewis-Skelly",
-      "Ethan Nwaneri",
-      "Cristhian Mosquera",
-      "Noni Madueke",
-      "Riccardo Calafiori",
-      "Piero Hincapié",
-      "Martín Zubimendi",
-      "Bukayo Saka",
-      "Jurrien Timber",
-      "William Saliba",
-      "Martinelli",
-      "Christian Nørgaard",
-      "Gabriel",
-      "Leandro Trossard",
-      "Viktor Gyökeres",
-      "Declan Rice",
-      "Mikel Merino",
-      "Martin Ødegaard",
-      "Ben White",
-      "Eberechi Eze",
-      "Gabriel Jesus",
-      "Kai Havertz"
-    ],
+    "players": []
   },
   {
     "id": 10,
