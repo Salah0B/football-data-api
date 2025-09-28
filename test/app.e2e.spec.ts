@@ -4,7 +4,7 @@ import * as request from 'supertest';
 import type supertest from 'supertest';
 import { ClubModule } from '../src/club.module';
 
-describe('Books API', () => {
+describe('Clubs API', () => {
   let app: INestApplication;
   let httpRequester: supertest.Agent;
 
@@ -19,113 +19,36 @@ describe('Books API', () => {
     httpRequester = request(app.getHttpServer());
   });
 
-  it('GET /books', async () => {
-    const response = await httpRequester.get('/books').expect(200);
+  it('GET /clubs', async () => {
+    const response = await httpRequester.get('/clubs').expect(200);
 
     expect(response.body).toEqual(expect.any(Array));
   });
 
-  it('POST /books', async () => {
+  it('POST /clubs', async () => {
     const response = await httpRequester
-      .post('/books')
+      .post('/clubs')
       .send({
-        isbn: '978-2081510436',
-        title: 'Candide',
-        author: 'Voltaire',
-        date: '1759',
+          id: 57,
+          name: "Arsenal FC",
+          tla: "ARS",
+          logo: "https://crests.football-data.org/57.png",
+          founded: 1886,
+          clubColors: "Red / White",
+          players: [],
       })
       .expect(201);
 
-    expect(response.body).toEqual({
-      isbn: '978-2081510436',
-      title: 'Candide',
-      author: 'Voltaire',
-      date: '1759',
-    });
+    expect(response.body).toEqual([{
+        id: 57,
+        name: "Arsenal FC",
+        tla: "ARS",
+        logo: "https://crests.football-data.org/57.png",
+        founded: 1886,
+        clubColors: "Red / White",
+        players: [],
+    }]);
   });
 
-  it('GET /books/:isbn', async () => {
-    // First prepare the data by adding a book
-    await httpRequester.post('/books').send({
-      isbn: '978-2081510436',
-      title: 'Candide',
-      author: 'Voltaire',
-      date: '1759',
-    });
 
-    // Then get the previously stored book
-    const response = await httpRequester
-      .get('/books/978-2081510436')
-      .expect(200);
-
-    expect(response.body).toEqual({
-      isbn: '978-2081510436',
-      title: 'Candide',
-      author: 'Voltaire',
-      date: '1759',
-    });
-  });
-
-  it('GET /books by author', async () => {
-    // First prepare the data by adding some books
-    await httpRequester.post('/books').send({
-      isbn: '978-2081510436',
-      title: 'Candide',
-      author: 'Voltaire',
-      date: '1759',
-    });
-    await httpRequester.post('/books').send({
-      isbn: '978-2081510438',
-      title: 'Zadig',
-      author: 'Voltaire',
-      date: '1748',
-    });
-    await httpRequester.post('/books').send({
-      isbn: '978-2081510437',
-      title: 'La Cantatrice chauve',
-      author: 'Ionesco',
-      date: '1950',
-    });
-
-    // Then get the previously stored book
-    const response = await httpRequester
-      .get('/books')
-      .query({ author: 'Voltaire' })
-      .expect(200);
-
-    expect(response.body).toEqual([
-      {
-        isbn: '978-2081510436',
-        title: 'Candide',
-        author: 'Voltaire',
-        date: '1759',
-      },
-      {
-        isbn: '978-2081510438',
-        title: 'Zadig',
-        author: 'Voltaire',
-        date: '1748',
-      },
-    ]);
-  });
-
-  it('DELETE /books/:isbn', async () => {
-    // First prepare the data by adding a book
-    await httpRequester.post('/books').send({
-      isbn: '978-2081510436',
-      title: 'Candide',
-      author: 'Voltaire',
-      date: '1759',
-    });
-
-    // Delete the book
-    await httpRequester.delete('/books/978-2081510436').expect(200);
-
-    // Finally, check the book was successfully deleted
-    const response = await httpRequester.get('/books');
-
-    expect(
-      response.body.some((book) => book.isbn === 978 - 2081510436),
-    ).toBeFalsy();
-  });
 });
