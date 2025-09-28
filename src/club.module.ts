@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ClubController } from './club.controller';
+import {ClubController} from './club.controller';
 import { ClubService } from './club.service';
 import { HttpModule } from '@nestjs/axios';
 import {ConfigModule} from "@nestjs/config";

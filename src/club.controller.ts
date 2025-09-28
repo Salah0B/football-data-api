@@ -23,13 +23,13 @@ export class ClubController {
 
   @Get()
   getClubs(@Query('tla') tla: string) {
-    if (tla) {
+      if (tla) {
       return this.clubService.getClubByTLA(tla);
     }
     return this.clubService.getAllClubs();
   }
 
-  @Get(':id')
+  @Get('details/:id')
   getClub(@Param('id') id: number) {
       return this.clubService.getClubById(id);
   }
@@ -47,7 +47,7 @@ export class ClubController {
 
   @Delete(':id')
   deleteClub(@Param('id') id: number): void {
-    this.clubService.remove(id);
+      this.clubService.remove(id);
   }
 
   @Post('search')

@@ -44,6 +44,7 @@ export class ClubService implements OnModuleInit {
           name: apiClub.name,
           tla: apiClub.tla,
           logo: apiClub.crest,
+          address: apiClub.address,
           founded : apiClub.founded,
           clubColors : apiClub.clubColors,
           players : apiClub.squad,
@@ -117,8 +118,10 @@ export class ClubService implements OnModuleInit {
   }
 
   search(term: string) {
-    return Array.from(this.storage.values())
-      .filter((club) => club.name.includes(term) || club.tla.includes(term))
-      .sort((a, b) => a.name.localeCompare(b.name));
+      const lowerTerm = term.toLowerCase();
+      return Array.from(this.storage.values())
+      .filter((club) => club.name.toLowerCase().includes(lowerTerm) ||
+          club.tla.toLowerCase().includes(lowerTerm) ||
+          club.players.some(player => player.name.toLowerCase().includes(term.toLowerCase())));
   }
 }
