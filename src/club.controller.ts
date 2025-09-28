@@ -22,7 +22,7 @@ export class ClubController {
   }
 
   @Get()
-  getClubs(@Query('tla') tla: string): Club[] {
+  getClubs(@Query('tla') tla: string) {
     if (tla) {
       return this.clubService.getClubByTLA(tla);
     }
@@ -32,6 +32,17 @@ export class ClubController {
   @Get(':id')
   getClub(@Param('id') id: number) {
       return this.clubService.getClubById(id);
+  }
+
+  @Get('favori')
+  getFavoriteClubs() {
+      return this.clubService.getFavoriteClubs();
+  }
+
+  @Post('favori')
+  addToFavorite(@Body() idClub: { id : number}): Club[] {
+      this.clubService.addToFavorite(idClub.id);
+      return this.clubService.getClubById(idClub.id);
   }
 
   @Delete(':id')

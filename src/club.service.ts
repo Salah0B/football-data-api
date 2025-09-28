@@ -5,16 +5,20 @@ import type { Club } from './Club';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 import { ApiClubs } from 'src/ApiClub';
+import * as fs from "node:fs";
 
 @Injectable()
 export class ClubService implements OnModuleInit {
-    private readonly apiKey: string;
 
   constructor(private readonly httpService: HttpService, private readonly configService: ConfigService) {
       this.apiKey = this.configService.get<string>('API_KEY');
   }
 
   private readonly storage: Map<number, Club> = new Map();
+  private readonly favori: Map<number, Club> = new Map();
+
+  private readonly apiKey: string;
+  private readonly filePath = 'dataset.json';
 
   async onModuleInit() {
       await Promise.all([this.loadClubsFromFile(), this.loadClubsFromApi()]);
@@ -29,7 +33,7 @@ export class ClubService implements OnModuleInit {
   async loadClubsFromApi() {
     const { data } = await firstValueFrom(
       this.httpService.get<ApiClubs>(
-          'http://api.football-data.org/v4/competitions/2021/teams', {
+          'http://api.football-data.org/v4/competitions/2021/teams?limit=100', {
           headers: {
               'X-Auth-Token': this.apiKey,
           },
@@ -51,18 +55,61 @@ export class ClubService implements OnModuleInit {
     this.storage.set(club.id, club);
   }
 
-  getAllClubs(): Club[] {
+  async addClubToFile(club: Club) {
+      try {
+          const fileContent = await this.readFile();
+          fileContent.push(club);
+          await this.writeFile(fileContent);
+      } catch (err) {
+          console.error('Error while modifying the file', err);
+          throw err;
+      }
+  }
+
+  private async readFile(): Promise<any[]> {
+        try {
+            const data = await fs.promises.readFile(this.filePath, 'utf8');
+            return JSON.parse(data);
+        } catch (err) {
+            if (err.code === 'ENOENT') {
+                return [];
+            }
+            throw err;
+        }
+  }
+
+  private async writeFile(data: Club[]): Promise<void> {
+      const jsonData = JSON.stringify(data, null, 2); // Pretty format with indentation
+      await fs.promises.writeFile(this.filePath, jsonData, 'utf8');
+  }
+
+  getAllClubsDetails() {
     return Array.from(this.storage.values()).sort((a, b) =>
-      a.name.localeCompare(b.name),
-    );
+      a.name.localeCompare(b.name),);
+  }
+
+  getAllClubs() {
+      return Array.from(this.storage.values()).sort((a, b) =>
+          a.name.localeCompare(b.name),
+      ).map(({ name, tla, logo, players }) =>
+          ({ name, tla, logo, players: players.map(player => player.name), }));
+  }
+
+  getFavoriteClubs() {
+      return Array.from(this.favori.values());
+  }
+
+  addToFavorite(id: number) {
+      this.addClubToFile(this.getClubById(id)[0]);
+      this.favori.set(id, this.getClubById(id)[0]);
   }
 
   getClubById(id: number): Club[] {
-      return this.getAllClubs().filter(club => club.id === Number(id));
+      return this.getAllClubsDetails().filter(club => club.id === Number(id));
   }
 
   getClubByTLA(tla: string): Club[] {
-      return this.getAllClubs().filter(club => club.tla === tla);
+      return this.getAllClubsDetails().filter(club => club.tla === tla);
   }
 
   remove(id: number) {
