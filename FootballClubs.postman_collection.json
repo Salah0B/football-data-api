@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "48ec5fd9-2e1d-4a45-af89-9d5bb0fbc923",
+		"name": "Football-data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48144560",
+		"_collection_link": "https://salaheddineobadah003-5604430.postman.co/workspace/S's-Workspace~300ff753-7fd2-4b18-8226-9dcbf1d9565c/collection/48144560-48ec5fd9-2e1d-4a45-af89-9d5bb0fbc923?action=share&source=collection_link&creator=48144560"
+	},
+	"item": [
+		{
+			"name": "Get all clubs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/clubs",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clubs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create club",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 57,\r\n    \"name\": \"Arsenal FC\",\r\n    \"tla\": \"ARS\",\r\n    \"logo\": \"https://crests.football-data.org/57.png\",\r\n    \"founded\": 1886,\r\n    \"clubColors\": \"Red / White\",\r\n    \"players\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/clubs",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clubs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get favorite clubs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/clubs/favori",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clubs",
+						"favori"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add to favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 73\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/clubs/favori",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clubs",
+						"favori"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a club details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/clubs/details/73",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clubs",
+						"details",
+						"73"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a club by query",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/clubs?tla=ARS",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clubs"
+					],
+					"query": [
+						{
+							"key": "tla",
+							"value": "ARS"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for a club",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"term\": \"gabriel\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/clubs/search",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clubs",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a club",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/clubs/11",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clubs",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "579ca5e0ae3541c1bc1973f79cddc32b",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-Auth-Token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://api.football-data.org/"
+		}
+	]
+}

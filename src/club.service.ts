@@ -31,15 +31,19 @@ export class ClubService implements OnModuleInit {
   }
 
   async loadClubsFromApi() {
-    const { data } = await firstValueFrom(
-      this.httpService.get<ApiClubs>(
-          'http://api.football-data.org/v4/competitions/2021/teams?limit=100', {
-          headers: {
-              'X-Auth-Token': this.apiKey,
-          },
-          }),
-    );
-    data.teams.map((apiClub) => ({
+    const urls = [
+        'http://api.football-data.org/v4/competitions/2021/teams?limit=100',
+        'http://api.football-data.org/v4/competitions/2015/teams?limit=100'
+    ];
+    for (const url of urls) {
+        const { data } = await firstValueFrom(
+            this.httpService.get<ApiClubs>( url, {
+                headers: {
+                    'X-Auth-Token': this.apiKey,
+                },
+            }),
+        );
+        data.teams.map((apiClub) => ({
           id: apiClub.id,
           name: apiClub.name,
           tla: apiClub.tla,
@@ -48,8 +52,9 @@ export class ClubService implements OnModuleInit {
           founded : apiClub.founded,
           clubColors : apiClub.clubColors,
           players : apiClub.squad,
-      }))
-      .forEach((club) => this.addClub(club));
+        }))
+        .forEach((club) => this.addClub(club));
+    }
   }
 
   addClub(club: Club) {
